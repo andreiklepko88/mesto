@@ -9,13 +9,13 @@
     border: none;
     right: -40px;
     top: -40px;
-    cursor: pointer;
     padding: 0;
     display: block;
 }
 
 .popup__icon-close:hover {
     opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 650px) {

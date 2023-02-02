@@ -1,4 +1,5 @@
 .profile__name-edit {
     display: flex;
     flex-direction: row;
+    overflow: visible;
 }
