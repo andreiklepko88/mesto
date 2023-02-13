@@ -103,7 +103,7 @@ const card = template.cloneNode(true);
 
     card.querySelector('.cards__like').addEventListener('click', (evt) => {
       evt.target.classList.toggle('cards__like_active')});
-    
+
     card.querySelector('.cards__delete').addEventListener('click', (evt) => {
       evt.target.closest('.cards__item').remove()});
 
@@ -118,4 +118,3 @@ const card = template.cloneNode(true);
 }
 
 closeBigPhoto.addEventListener('click', () => closePopup(bigPhoto));
-
