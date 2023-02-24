@@ -42,7 +42,7 @@ closeButtons.forEach((button) => {
 
 function openPopup(item) {
   item.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByEscape)
+  document.addEventListener('keydown', closePopupByEscape);
 };
 
 editButton.addEventListener('click', function () {
@@ -53,7 +53,7 @@ editButton.addEventListener('click', function () {
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByEscape)
+  document.removeEventListener('keydown', closePopupByEscape);
 };
 
 popupForm.addEventListener('submit', function (evt) {
@@ -75,8 +75,15 @@ const bigPhoto = document.querySelector('.popup_img_big');
 const bigImage = document.querySelector('.popup__image');
 const bigCaption = document.querySelector('.popup__caption');
 const closeBigPhoto = document.querySelector('.popup_img_big').querySelector('.popup__icon-close');
+const createCardButton = document.getElementById('createCard');
 
-addPlace.addEventListener('click', () => openPopup(popupCards));
+addPlace.addEventListener('click', function () {
+ openPopup(popupCards);
+ if (inputPlace.textContent === '' || inputLink.textContent === '') {
+  createCardButton.setAttribute('disabled', 'disabled');
+  createCardButton.classList.add('popup__save_disabled');
+ };
+});
 
 formPlace.addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -133,7 +140,7 @@ popups.forEach(function(popup) {
   });
 });
 
-function closePopupByEscape (evt) {  
+function closePopupByEscape (evt) {
   if (evt.key === 'Escape') {
   const popupActive = document.querySelector('.popup_opened');
   closePopup(popupActive);
