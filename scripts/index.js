@@ -4,7 +4,7 @@ import FormValidator from "./FormValidator.js";
 const popupProfile = document.querySelector('.popup_profile');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-const closeButtons = document.querySelectorAll('.popup__icon-close');
+const crossButtons = document.querySelectorAll('.popup__icon-close');
 const profileJob = document.querySelector('.profile__job');
 const profileName = document.querySelector('.profile__name');
 const editButton = document.querySelector('.profile__edit-button');
@@ -27,12 +27,12 @@ const openBigPhotoPopup = (link, name) => {
   openPopup(bigPhoto);
 }
 
-closeButtons.forEach((button) => {
+crossButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
 
-export function openPopup(item) {
+function openPopup(item) {
   item.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEscape);
 };
@@ -41,6 +41,9 @@ editButton.addEventListener('click', function () {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+
+  validationProfile.resetValidation(); 
+  validationProfile.toggleButtonState();
 });
 
 function closePopup(item) {
@@ -86,34 +89,31 @@ const template = document.querySelector('.cards__template').content.querySelecto
 const list = document.querySelector('.cards__list');
 const inputPlace = document.querySelector('.popup__input_type_place');
 const inputLink = document.querySelector('.popup__input_type_link');
-const addPlace = document.querySelector('.profile__add-place');
+const newPlace = document.querySelector('.profile__add-place');
 const popupCards = document.querySelector('.popup_cards');
 const formPlace = document.querySelector('.popup__form_place');
-const closePlaceForm = document.querySelector('.popup_cards').querySelector('.popup__icon-close');
 const bigPhoto = document.querySelector('.popup_img_big');
 const bigImage = document.querySelector('.popup__image');
 const bigCaption = document.querySelector('.popup__caption');
-const closeBigPhoto = document.querySelector('.popup_img_big').querySelector('.popup__icon-close');
-const createCardButton = document.getElementById('createCard');
 
-const validateProfile = new FormValidator(config, popupProfile);
-validateProfile.enableValidation();
-const validateAddCard = new FormValidator(config, popupCards);
-validateAddCard.enableValidation();
+const validationProfile = new FormValidator(config, popupProfile);
+validationProfile.enableValidation();
 
-addPlace.addEventListener('click', function () {
+const validationAddCard = new FormValidator(config, popupCards);
+validationAddCard.enableValidation();
+
+newPlace.addEventListener('click', function () {
  openPopup(popupCards);
-  if (inputPlace.textContent === '' || inputLink.textContent === '') {
-  createCardButton.setAttribute('disabled', 'disabled');
-  createCardButton.classList.add('popup__save_disabled');
-  };
+
+ validationAddCard.resetValidation();
+ validationAddCard.toggleButtonState();
 });
 
 formPlace.addEventListener('submit', function (evt) {
   evt.preventDefault();
 
-  const card = new Card({name:inputPlace.value, link:inputLink.value}, '.cards__template', openBigPhotoPopup);
-  list.prepend(card.createCards());
+  const card = makeCard({name:inputPlace.value, link:inputLink.value}, '.cards__template', openBigPhotoPopup);
+  list.prepend(card);
   closePopup(popupCards);
 
   evt.target.reset();
