@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/logo-white.svg" alt="логотип">
+            <img class="header__logo" src="<%=require('./images/logo-white.svg')%>" alt="логотип">
         </header>
 
         <main class="content">
 
             <section class="profile">
-                <img class="profile__avatar" src="./images/photo-profile.jpg" alt="Фото профиля">
+                <img class="profile__avatar" src="<%=require('./images/photo-profile.jpg')%>" alt="Фото профиля">
                 <div class="profile__info">
                     <div class="profile__name-edit">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -43,9 +42,9 @@
         <div class="popup__container">
             <h3 class="popup__heading">Редактировать профиль</h3>
             <form class="popup__form popup__form_profile" name="profileForm" method="post" novalidate>
-                <input id="name-input" type="text"  name="Имя" class="popup__input popup__input_type_name" placeholder="Имя" minlength="2" maxlength="40" required>
+                <input id="name-input" type="text"  name="name" class="popup__input popup__input_type_name" placeholder="Имя" minlength="2" maxlength="40" required>
                 <span class="name-input-error popup__error popup__error_type_name"></span>
-                <input id="job-input" type="text" name="Профессия" class="popup__input popup__input_type_job" placeholder="О себе" minlength="2" maxlength="200" required>
+                <input id="job-input" type="text" name="job" class="popup__input popup__input_type_job" placeholder="О себе" minlength="2" maxlength="200" required>
                 <span class="job-input-error popup__error popup__error_type_job"></span>
                 <button class="popup__save" type="submit" aria-label="сохранить профиль">Сохранить</button>
             </form>
@@ -57,9 +56,9 @@
       <div class="popup__container">
           <h3 class="popup__heading">Новое место</h3>
           <form class="popup__form popup__form_place" name="cardForm" method="post" novalidate>
-              <input id="place-input" type="text" name="Название" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="30" required>
+              <input id="place-input" type="text" name="place" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="place-input-error popup__error popup__error_type_place"></span>
-              <input id="link-input" type="url" name="Ссылка на картинку" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required>
+              <input id="link-input" type="url" name="link на картинку" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required>
               <span class="link-input-error popup__error popup__error_type_link"></span>
               <button id="createCard" class="popup__save" type="submit" aria-label="сохранить профиль">Создать</button>
           </form>
@@ -88,7 +87,5 @@
     </li>
   </template>
 
-  <script type="module" defer src="./scripts/index.js"></script>
-  
 </body>
 </html>
