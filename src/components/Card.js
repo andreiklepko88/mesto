@@ -13,11 +13,12 @@ _getTemplate() {
 
 createCards() {
   this._element = this._getTemplate();
+  this._cardsImage = this._element.querySelector('.cards__image');
   this._setEventListeners();
 
-  const cardsImage = this._element.querySelector('.cards__image');
-  cardsImage.src = this._link;
-  cardsImage.alt = this._name;
+  
+  this._cardsImage.src = this._link;
+  this._cardsImage.alt = this._name;
 
   const cardsText = this._element.querySelector('.cards__text');
   cardsText.textContent = this._name; 
@@ -28,6 +29,8 @@ createCards() {
 _removeElement() {
   this._element.remove();
   this._element = null;
+  this._likeButton = null;
+  this._cardsImage = null;
 }
 
 _toggleLikeButton() {
@@ -44,7 +47,7 @@ _setEventListeners () {
     this._toggleLikeButton();
   });
 
-  this._element.querySelector('.cards__image').addEventListener('click', () => {
+  this._cardsImage.addEventListener('click', () => {
     this._openBigPhotoPopup(this._link, this._name)
   });
 };

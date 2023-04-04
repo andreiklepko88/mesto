@@ -10,7 +10,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
- const handleCardClick = (link, name) => {
+const handleCardClick = (link, name) => {
    popupBigImage.open(link, name);
 };
 
@@ -23,7 +23,7 @@ const makeCard = (data, templateSelector, handleCardClick) => {
   const card = new Card(data, templateSelector, handleCardClick);
   const cardElement = card.createCards();
   return cardElement;
-  }
+};
 
 const validationProfile = new FormValidator(config, popupProfile);
 validationProfile.enableValidation();
@@ -32,7 +32,7 @@ const validationAddCard = new FormValidator(config, popupCards);
 validationAddCard.enableValidation();
 
 const defaultCardList = new Section(
-  {
+{
   items: initialCards,
   renderer: (item) => {
     const cardElement = makeCard(item, '.cards__template', handleCardClick);
@@ -43,12 +43,12 @@ const defaultCardList = new Section(
 defaultCardList.renderItems();
 
 const popupAddPlace = new PopupWithForm('.popup_cards', submitAddCard);
-popupAddPlace._setEventListeners();
+popupAddPlace.setEventListeners();
 
 function submitAddCard (inputValues) {
   const card = makeCard(
     {name: inputValues['place'], link: inputValues['link']}, '.cards__template', handleCardClick);
-    defaultCardList.addItem(card);
+  defaultCardList.addItem(card);
 };
 
 newPlace.addEventListener('click', () => {
@@ -57,7 +57,7 @@ newPlace.addEventListener('click', () => {
 });
 
 const popupEditProfile = new PopupWithForm('.popup_profile', submitProfile);
-popupEditProfile._setEventListeners();
+popupEditProfile.setEventListeners();
 
 function submitProfile (formValues) {
   userInfo.setUserInfo(formValues['name'], formValues['job']);
