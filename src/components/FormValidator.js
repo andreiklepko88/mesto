@@ -30,12 +30,12 @@ _hasInvalidInput () {
   });
 }
 
-_disableButton () {
+disableButton () {
   this._submitButtonSelector.classList.add(this.config.inactiveButtonClass);
   this._submitButtonSelector.setAttribute('disabled', 'disabled');
 }
 
-_enableButton () {
+enableButton () {
   this._submitButtonSelector.classList.remove(this.config.inactiveButtonClass);
   this._submitButtonSelector.removeAttribute('disabled');
 }
@@ -43,9 +43,9 @@ _enableButton () {
 
 _toggleButtonState () {
   if (this._hasInvalidInput()) {
-    this._disableButton();
+    this.disableButton();
   } else {
-    this._enableButton();
+    this.enableButton();
   };
 }
 
@@ -63,7 +63,7 @@ _setEventListeners () {
   this._toggleButtonState ();
   this._inputList.forEach((inputSelector) => {
     inputSelector.addEventListener('input', () => {
-      this._checkInputValidity(inputSelector)
+      this._checkInputValidity(inputSelector);
       this._toggleButtonState();
     });
   });

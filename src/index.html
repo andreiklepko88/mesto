@@ -12,18 +12,20 @@
             <img class="header__logo" src="<%=require('./images/logo-white.svg')%>" alt="логотип">
         </header>
 
-        <main class="content">
+        <main class="content">        
 
             <section class="profile">
+              <div class = "profile__avatar-container">
                 <img class="profile__avatar" src="<%=require('./images/photo-profile.jpg')%>" alt="Фото профиля">
-                <div class="profile__info">
-                    <div class="profile__name-edit">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
-                    </div>
-                    <p class="profile__job">Исследователь океана</p>
+              </div>
+              <div class="profile__info">
+                <div class="profile__name-edit">
+                  <h1 class="profile__name">Жак-Ив Кусто</h1>
+                  <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
                 </div>
-                <button class="profile__add-place" type="button" aria-label="Добавить место"></button>
+                <p class="profile__job">Исследователь океана</p>
+              </div>
+              <button class="profile__add-place" type="button" aria-label="Добавить место"></button>
             </section>
 
             <section class="cards">
@@ -56,9 +58,9 @@
       <div class="popup__container">
           <h3 class="popup__heading">Новое место</h3>
           <form class="popup__form popup__form_place" name="cardForm" method="post" novalidate>
-              <input id="place-input" type="text" name="place" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="30" required>
+              <input id="place-input" type="text" name="place-input" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="place-input-error popup__error popup__error_type_place"></span>
-              <input id="link-input" type="url" name="link на картинку" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required>
+              <input id="link-input" type="url" name="link-input" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку" required>
               <span class="link-input-error popup__error popup__error_type_link"></span>
               <button id="createCard" class="popup__save" type="submit" aria-label="сохранить профиль">Создать</button>
           </form>
@@ -76,13 +78,36 @@
     </div>
   </div>
 
+  <div class = "popup popup__confirmation">
+    <div class = "popup__container popup__confirmation-container">
+      <h3 class="popup__heading popup__heading_confirmation">Вы уверены?</h3>
+      <button id="confirmationDeleteCard" class="popup__save" type="submit" aria-label="удалить карточку">Да</button>
+      <button class="popup__icon-close" type="button" aria-label="закрыть"></button>
+    </div>
+  </div>
+
+  <div class = "popup popup__avatar">
+    <div class = "popup__container">
+      <h3 class="popup__heading">Обновить аватар</h3>
+      <form class="popup__form popup__form_avatar" name="avatarForm" method="post" novalidate>
+        <input id="avatar-input" type="url" name="link" class="popup__input popup__input_type_avatar" placeholder="Ссылка на картинку" required>
+        <span class="avatar-input-error popup__error popup__error_type_avatar"></span>
+        <button id="submitAvatar" class="popup__save" type="submit" aria-label="обновить аватар">Сохранить</button>
+      </form>    
+      <button class="popup__icon-close" type="button" aria-label="закрыть"></button>
+    </div>
+  </div>
+
   <template class="cards__template">
     <li class="cards__item">
       <button class="cards__delete" type="button" aria-label="Удалить карточку"></button>
       <img class="cards__image" src="#" alt="#">
       <div class="cards__name">
-          <h2 class="cards__text"></h2>
+        <h2 class="cards__text"></h2>
+        <div class="cards__like-container">
           <button class="cards__like" type="button" aria-label="Поставить лайк"></button>
+          <span class="cards__like-amount">0</span>
+        </div>
       </div>
     </li>
   </template>
