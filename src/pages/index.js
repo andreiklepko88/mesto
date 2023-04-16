@@ -62,7 +62,7 @@ function handleLikeClick(id, isLiked, card) {
 };
 
 
-const popupWithConfirmation = new PopupWithConfirmation('.popup__confirmation');
+const popupWithConfirmation = new PopupWithConfirmation('.popup_confirmation');
 popupWithConfirmation.setEventListeners();
 
 
@@ -91,7 +91,7 @@ let userId = null;
  popupAddPlace.setEventListeners();
 
  const popupBigImage = new PopupWithImage('.popup_img_big');
- 
+
  const openBigPhotoPopup = (link, name) => {
     popupBigImage.open(link, name);
  };
@@ -123,7 +123,7 @@ editButton.addEventListener('click', () => {
 popupEditProfile.setEventListeners();
 
 
-const popupAvatarEdit = new PopupWithForm('.popup__avatar', handleAvatarEdit);
+const popupAvatarEdit = new PopupWithForm('.popup_avatar', handleAvatarEdit);
 
 function handleAvatarEdit(data) {
   popupAvatarEdit.savingButton(true);
@@ -155,7 +155,7 @@ Promise.all([ api.getUserData(), api.getCards() ])
 
   const validationProfile = new FormValidator(config, popupProfile);
   validationProfile.enableValidation();
-  
+
   const validationAddCard = new FormValidator(config, popupCards);
   validationAddCard.enableValidation();
 
