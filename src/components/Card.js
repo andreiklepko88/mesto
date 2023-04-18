@@ -10,13 +10,14 @@ constructor(data, userId, templateSelector, openBigPhotoPopup, handleLikeClick, 
   this.id = data._id;
   this.handleLikeClick = handleLikeClick;
   this._handleDeleteClick = handleDeleteClick;
+
 }
 
 _getTemplate() {
   const cardElement = document.querySelector('.cards__template').content.querySelector('.cards__item').cloneNode(true);
   return cardElement;
 }
- 
+
 createCards() {
   this._element = this._getTemplate();
   this._setEventListeners();
@@ -25,14 +26,14 @@ createCards() {
   this._cardsImage.src = this._link;
   this._cardsImage.alt = this._name;
   this._element.querySelector('.cards__text').textContent = this._name;
-  
+
   if (this._userId !== this._ownerId) {
     this._trashBinBtn.remove();
   };
-  
-  
+
+
   this.setLikeStatus(this._likes);
-  
+
   return this._element;
 }
 
@@ -55,12 +56,11 @@ addLike() {
 }
 
 removeLike() {
-  this._likeButton.classList.remove('cards__like_active');      
+  this._likeButton.classList.remove('cards__like_active');
 }
 
 
 setLikeStatus(data) {
-  this._likeCounter = this._element.querySelector('.cards__like-amount');
   this._likeCounter.textContent = data.length;
   this._likes = data;
   if (this.checkLikes()) {
@@ -71,6 +71,7 @@ setLikeStatus(data) {
 };
 
 _setEventListeners () {
+  this._likeCounter = this._element.querySelector('.cards__like-amount');
   this._trashBinBtn = this._element.querySelector('.cards__delete');
   this._trashBinBtn.addEventListener('click', () =>{
   this._handleDeleteClick(this.id, this);

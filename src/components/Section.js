@@ -14,5 +14,8 @@ export default class Section {
       this._renderer(card);
     });
   }
+
+  
 }
+
 

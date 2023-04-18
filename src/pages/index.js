@@ -10,7 +10,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
-import PopupWithConfirmation from "../components/popupWithConfirmation.js"
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js"
 
 
 function handleDeleteClick (id, card) {
